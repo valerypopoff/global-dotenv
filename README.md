@@ -54,7 +54,7 @@ global_dotenv.appendSync('FOO', 'BAR', {path: '/path/to/the/file'});
 ```
 If the file doesn't exist, it will be automatically created. By using a proper custom path every time you can have multiple global files if it makes sense to you and your apps. For example you can have several groups of apps that share different global files. 
 
-## Acessibility of the global.env file
+## Accessibility of the global.env file
 
 The whole point of this module is that the global file can be accessed by any app on the machine. It's only possible if the apps are running under a user that has access to the global file. **Make sure to start the apps under a user that has access to the global file.** For example if the app uses the default `/home/global.env` file, it either must be started by `root` user or with `sudo` command, or you must manually create `/home/global.env` file and set it's permissions accordingly. If the app that tries to use the global file under a user that has no acces to the global file, `parseSync` and `appendSync` functions will throw an exception. You'll need to try-catch it yourself.
 

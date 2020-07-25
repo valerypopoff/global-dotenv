@@ -1,6 +1,6 @@
 # global-dotenv
 
-Dotenv creates the global `global.env` file that is accessible from all running apps on your machine and allows them to read variables from it and append variables to it.
+Dotenv creates the shared global `global.env` file that is accessible from all running apps on your machine and allows them to read variables from it and append variables to it.
 
 ## Install
 

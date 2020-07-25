@@ -1,12 +1,14 @@
 # global-dotenv
 
-Global-dotenv creates the shared persistent `global.env` file that is accessible from all running apps on your machine and allows them to read variables from it and append variables to it. It enables the apps "know about each other" and share information between each other without building a dedicated message system.
+Global-dotenv creates the shared persistent `global.env` file that is accessible from all running apps and allows them to read variables from it and append variables to it. It enables apps to "know about each other" and to share information between each other without building a message system.
+
 
 ## Install
 
 ```bash
 npm install global-dotenv
 ```
+
 
 ## Usage
 
@@ -43,7 +45,7 @@ global_dotenv.appendSync('OBJ', {foo: 'bar'});
 
 ## Config
 
-The default path to the global file is `/home/global.env` for Linux and `%HOMEDRIVE%:\Users\global.env` for Windows. You can change it by using a custom global file. Do this by passing an options object with a `path` key into `parseSync` and `appendSync` functions: 
+The default path to the global file is `$HOME/global.env` (Like: `/home/user/global.env`) for Linux and `%HOMEPATH%\global.env` (Like: `C:\Users\User\global.env`) for Windows. You can change it by setting a custom path. Do this by passing an options object with a `path` key into `parseSync` and `appendSync` functions: 
 
 ```javascript
 const global_dotenv = require('global-dotenv');
@@ -56,6 +58,4 @@ If the file doesn't exist, it will be automatically created. By using a proper c
 
 ## Accessibility of the global.env file
 
-The whole point of this module is that the global file can be accessed by any app on the machine. It's only possible if the apps are running under a user that has access to the global file. **Make sure to start the apps under a user that has access to the global file.** For example if the app uses the default `/home/global.env` file, it either must be started by `root` user or with `sudo` command, or you must manually create `/home/global.env` file and set it's permissions accordingly. If the app that tries to use the global file under a user that has no acces to the global file, `parseSync` and `appendSync` functions will throw an exception. You'll need to try-catch it yourself.
-
-The safe option is to run apps under the same non-root `some_user` user and have a custom global file in `/home/some_user/global.env`.
+The whole point of this module is that the global file can be accessed by many apps. The default `$HOME/global.env` file is accessible by the apps that are running under the user who owns the `$HOME` directory, under `root` user or under any user with `sudo` command. If you want the `global.env` file to be accessed by apps that are run under different users, **make sure those users have access to the global file**. If the app that tries to use the global file is run under a user that has no acces to the global file, `parseSync` and `appendSync` functions will throw an exception. You'll need to try-catch it yourself.

@@ -40,7 +40,7 @@ global_dotenv.appendSync('OBJ', {foo: 'bar'});
 
 ## Config
 
-The default path to the global file is `/home/global.env`. You can change it by passing an options object with a `path` key into parseSync and appendSync functions: 
+The default path to the global file is `/home/global.env` for Linux and `%HOMEDRIVE%:\Users\global.env` for Windows. You can change it by passing an options object with a `path` key into parseSync and appendSync functions: 
 
 ```javascript
 const global_dotenv = require('global-dotenv');
@@ -50,3 +50,7 @@ var global_dotenv_as_json = global_dotenv.parseSync({path: '/path/to/the/file'})
 global_dotenv.appendSync('FOO', 'BAR', {path: '/path/to/the/file'});
 ```
 If the file doesn't exist, it will be automatically created. 
+
+## Important
+
+The point of this module is that the variables in the global file can be accessed by any app on the machine. It's only possible if these apps are running under users that have access to the global file. Make sure to start the apps by a user that has access to the global file. For example if the app uses the default `/home/global.env` file, it either must be started by `root` user or with `sudo` command, or you must manually create `/home/global.env` file and set it's permissions accordingly.

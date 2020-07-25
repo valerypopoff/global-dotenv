@@ -23,7 +23,7 @@ global_dotenv_as_json['FOO'];
 ```
 If the global file doesn't yet exist or is removed, an empty object `{}` is returned. As the file is shared by all running apps, and can be altered by them at any moment, it's recommended to parse it every time right before you want to read the values from it.
 
-To append variables into the global `global.env` file, pass them into appendSync function in the form of `key, value`:
+To append variables to the global `global.env` file, pass them into appendSync function in the form of `key, value`:
 
 ```javascript
 const global_dotenv = require('global-dotenv');

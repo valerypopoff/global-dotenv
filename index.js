@@ -6,13 +6,13 @@ const dotenv = require('dotenv');
 
 const path = require('path');
 const os = require('os');
-var user_home = os.homedir();
-var home_home = path.dirname(user_home);
+//var user_home = os.homedir();
+//var home_home = path.dirname(user_home);
 
-if( os.platform != 'win32' && home_home == '/' )
-    home_home = '/home';
+//if( os.platform != 'win32' && home_home == '/' )
+//    home_home = '/home';
 
-const global_env_file_path = path.join(home_home, 'global.env');
+const global_env_file_path = path.join(os.homedir(), 'global.env');
 
 //-------------------------------------------------------------------
 

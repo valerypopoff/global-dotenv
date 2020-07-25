@@ -32,7 +32,7 @@ global_dotenv.appendSync('FOO', 'BAR');
 global_dotenv.appendSync('NUMBER', 1024);
 ```
 
-Both `key` and `value` will be converted into strings before appending. If typeof `value` is "object", it's converted into a string with JSON.stringify():
+Both `key` and `value` will be converted into strings before appending. If typeof `value` is `"object"`, it's automatically converted into a string with `JSON.stringify()`:
 
 ```javascript
 const global_dotenv = require('global-dotenv');
@@ -52,7 +52,7 @@ var global_dotenv_as_json = global_dotenv.parseSync({path: '/path/to/the/file'})
 
 global_dotenv.appendSync('FOO', 'BAR', {path: '/path/to/the/file'});
 ```
-If the file doesn't exist, it will be automatically created. 
+If the file doesn't exist, it will be automatically created. By using a proper custom path every time you can have multiple global files if it makes sense to you and your apps. For example you can have several groups of apps that share different global files. 
 
 ## Acessibility of the global.env file
 
